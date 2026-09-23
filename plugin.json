@@ -1,0 +1,32 @@
+{
+  "name": "siyuan-app-portal",
+  "author": "章果Angeal",
+  "url": "https://github.com/WieAngeal/siyuan-app-portal",
+  "version": "0.1.0",
+  "minAppVersion": "2.9.0",
+  "backends": [
+    "all"
+  ],
+  "frontends": [
+    "all"
+  ],
+  "displayName": {
+    "default": "统一应用门户",
+    "zh_CN": "统一应用门户",
+    "en_US": "App Portal"
+  },
+  "description": {
+    "default": "把常用网站书签变成安卓风桌面：圆角图标网格、分类页签、搜索、浏览器书签导入与后台维护。",
+    "zh_CN": "把常用网站书签变成安卓风桌面：圆角图标网格、分类页签、搜索、浏览器书签导入与后台维护。",
+    "en_US": "Android-style web bookmark launcher for SiYuan."
+  },
+  "icon": "icon.png",
+  "keywords": [
+    "bookmark",
+    "launcher",
+    "app",
+    "portal",
+    "书签",
+    "统一应用门户"
+  ]
+}

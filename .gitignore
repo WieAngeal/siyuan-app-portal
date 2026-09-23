@@ -1,0 +1,7 @@
+node_modules/
+dist/
+dev/
+.env.local
+_ref/
+package.zip
+*.log
