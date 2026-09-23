@@ -1,0 +1,775 @@
+/* App Portal 样式：全部基于思源 b3 主题变量，自动跟随明暗主题 */
+.b3-dialog.ap-dialog {
+    --ap-bg: var(--b3-theme-background);
+    --ap-surface: var(--b3-theme-surface);
+    --ap-text: var(--b3-theme-on-background);
+    --ap-muted: var(--b3-theme-on-surface);
+    --ap-primary: var(--b3-theme-primary);
+    --ap-primary-on: var(--b3-theme-on-primary);
+    --ap-line: color-mix(in srgb, var(--b3-theme-on-background) 12%, transparent);
+    --ap-line-strong: color-mix(in srgb, var(--b3-theme-on-background) 22%, transparent);
+    --ap-radius: 10px;
+    --ap-radius-lg: 16px;
+    --ap-shadow: 0 8px 28px rgba(0, 0, 0, .18);
+}
+
+/* 兼容新旧版思源：旧版弹窗内置 .b3-dialog__content，3.8.x 改为 .b3-dialog__body 包裹 */
+.b3-dialog.ap-dialog .b3-dialog__body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+    background: var(--ap-bg);
+}
+
+.b3-dialog.ap-dialog .b3-dialog__content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--ap-bg);
+}
+
+.ap-root {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    color: var(--ap-text);
+    font-size: 14px;
+}
+
+/* ---------- 桌面弹窗 ---------- */
+
+.ap-launcher {
+    position: relative;
+}
+
+.ap-wallpaper,
+.ap-wallpaper-mask {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.ap-wallpaper {
+    background-size: cover;
+    background-position: center;
+}
+
+.ap-wallpaper-mask {
+    background: var(--ap-bg);
+}
+
+.ap-topbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--ap-line);
+}
+
+.ap-search {
+    flex: 1;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ap-surface);
+    border: 1px solid var(--ap-line);
+    border-radius: var(--ap-radius-full, 999px);
+    padding: 6px 14px;
+}
+
+.ap-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--ap-text);
+    font-size: 14px;
+}
+
+.ap-topbar-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.ap-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--ap-radius);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--ap-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .12s, color .12s;
+}
+
+.ap-icon-btn:hover {
+    background: var(--ap-surface);
+    color: var(--ap-text);
+    border-color: var(--ap-line);
+}
+
+.ap-icon-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.ap-cats {
+    position: relative;
+    display: flex;
+    gap: 6px;
+    padding: 10px 18px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.ap-cats::-webkit-scrollbar {
+    display: none;
+}
+
+.ap-cat {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--ap-line);
+    background: transparent;
+    color: var(--ap-muted);
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.ap-cat:hover {
+    color: var(--ap-text);
+    border-color: var(--ap-line-strong);
+}
+
+.ap-cat.is-active {
+    background: var(--ap-primary);
+    border-color: var(--ap-primary);
+    color: var(--ap-primary-on);
+}
+
+.ap-cat-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex: none;
+}
+
+.ap-stage {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 26px 8px;
+}
+
+.ap-grid-wrap {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.ap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--ap-cell, 96px));
+    justify-content: space-around;
+    gap: 18px 10px;
+    padding-bottom: 12px;
+}
+
+.ap-grid.is-fixed {
+    justify-content: stretch;
+}
+
+.ap-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 2px;
+    border: none;
+    background: transparent;
+    border-radius: var(--ap-radius);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.ap-tile:hover .ap-ico {
+    transform: translateY(-2px);
+}
+
+.ap-tile.is-dragging {
+    opacity: .4;
+}
+
+.ap-ico {
+    width: var(--ap-size, 56px);
+    height: var(--ap-size, 56px);
+    border-radius: 24%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--b3-theme-on-background) 18%, transparent);
+    transition: transform .12s;
+    flex: none;
+}
+
+.ap-ico img {
+    width: 72%;
+    height: 72%;
+    object-fit: contain;
+    -webkit-user-drag: none;
+}
+
+.ap-ico-letter {
+    font-size: calc(var(--ap-size, 56px) * .42);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+}
+
+.ap-ico-emoji {
+    font-size: calc(var(--ap-size, 56px) * .5);
+    line-height: 1;
+}
+
+.ap-tile-label {
+    max-width: 88px;
+    font-size: 12px;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--ap-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ap-fav-badge {
+    position: absolute;
+    top: 0;
+    right: calc(50% - var(--ap-size, 56px) / 2);
+    font-size: 11px;
+}
+
+.ap-cat-chip {
+    font-size: 11px;
+    color: var(--ap-muted);
+    max-width: 88px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ap-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 36px;
+    height: 56px;
+    border: none;
+    background: color-mix(in srgb, var(--ap-bg) 70%, transparent);
+    color: var(--ap-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ap-radius);
+    opacity: 0;
+    transition: opacity .12s;
+}
+
+.ap-stage:hover .ap-arrow {
+    opacity: .8;
+}
+
+.ap-arrow:hover {
+    color: var(--ap-text);
+}
+
+.ap-arrow.ap-prev { left: 4px; }
+.ap-arrow.ap-next { right: 4px; }
+
+.ap-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px 0 8px;
+    min-height: 18px;
+}
+
+.ap-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: var(--ap-line-strong);
+    cursor: pointer;
+}
+
+.ap-dot.is-active {
+    width: 16px;
+    border-radius: 999px;
+    background: var(--ap-primary);
+}
+
+.ap-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--ap-muted);
+}
+
+.ap-tooltip {
+    position: fixed;
+    z-index: 9999;
+    max-width: 320px;
+    background: var(--ap-surface);
+    color: var(--ap-text);
+    border: 1px solid var(--ap-line);
+    border-radius: var(--ap-radius);
+    box-shadow: var(--ap-shadow);
+    padding: 8px 12px;
+    pointer-events: none;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.ap-tooltip b {
+    display: block;
+    font-size: 13px;
+}
+
+.ap-tooltip span {
+    color: var(--ap-muted);
+    word-break: break-all;
+}
+
+/* ---------- 后台管理 ---------- */
+
+.ap-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 8px 14px 0;
+    border-bottom: 1px solid var(--ap-line);
+    flex: none;
+}
+
+.ap-tab {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--ap-muted);
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.ap-tab:hover { color: var(--ap-text); }
+
+.ap-tab.is-active {
+    color: var(--ap-primary);
+    border-bottom-color: var(--ap-primary);
+}
+
+.ap-panel {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 16px 18px;
+}
+
+.ap-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.ap-toolbar .b3-text-field,
+.ap-toolbar .b3-select {
+    width: auto;
+    min-width: 140px;
+}
+
+.ap-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.ap-table th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--ap-muted);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--ap-line);
+    white-space: nowrap;
+}
+
+.ap-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--ap-line);
+    vertical-align: middle;
+}
+
+.ap-table tr:hover td {
+    background: color-mix(in srgb, var(--ap-primary) 6%, transparent);
+}
+
+.ap-table .ap-url {
+    color: var(--ap-muted);
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ap-row-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ap-mini-ico {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex: none;
+    font-weight: 600;
+    color: #fff;
+    font-size: 13px;
+}
+
+.ap-mini-ico img {
+    width: 72%;
+    height: 72%;
+    object-fit: contain;
+}
+
+.ap-drag-handle {
+    cursor: grab;
+    color: var(--ap-muted);
+    display: inline-flex;
+}
+
+.ap-star-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: #c0c0c8;
+    padding: 2px 4px;
+}
+
+.ap-star-btn.is-on { color: #F5A623; }
+
+.ap-actions {
+    display: flex;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+/* ---------- 表单 ---------- */
+
+.ap-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 20px;
+}
+
+.ap-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ap-form-row > label {
+    font-size: 13px;
+    color: var(--ap-muted);
+}
+
+.ap-form-row .b3-text-field,
+.ap-form-row .b3-select {
+    width: 100%;
+}
+
+.ap-form-foot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding-top: 6px;
+}
+
+.ap-type-switch {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.ap-type-switch button {
+    padding: 5px 12px;
+    font-size: 13px;
+    border-radius: 999px;
+    border: 1px solid var(--ap-line);
+    background: transparent;
+    color: var(--ap-muted);
+    cursor: pointer;
+}
+
+.ap-type-switch button.is-active {
+    border-color: var(--ap-primary);
+    color: var(--ap-primary);
+    background: color-mix(in srgb, var(--ap-primary) 8%, transparent);
+}
+
+.ap-icon-preview-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.ap-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.ap-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.ap-swatch.is-active {
+    border-color: var(--ap-text);
+    box-shadow: 0 0 0 2px var(--ap-bg), 0 0 0 4px var(--ap-line-strong);
+}
+
+.ap-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* ---------- 导入 / 卡片 ---------- */
+
+.ap-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.ap-card {
+    border: 1px solid var(--ap-line);
+    border-radius: var(--ap-radius-lg);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--ap-surface);
+}
+
+.ap-card h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.ap-card p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--ap-muted);
+    line-height: 1.6;
+    flex: 1;
+}
+
+.ap-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ap-preview-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--ap-muted);
+    flex-wrap: wrap;
+}
+
+.ap-preview-list {
+    border: 1px solid var(--ap-line);
+    border-radius: var(--ap-radius);
+    max-height: 46vh;
+    overflow: auto;
+}
+
+.ap-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--ap-line);
+}
+
+.ap-preview-item:last-child { border-bottom: none; }
+
+.ap-preview-item .ap-name { flex: 1; min-width: 0; }
+.ap-preview-item .ap-name b {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ap-preview-item .ap-name span {
+    display: block;
+    font-size: 12px;
+    color: var(--ap-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ap-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ap-primary) 12%, transparent);
+    color: var(--ap-primary);
+    flex: none;
+}
+
+.ap-badge.is-dup {
+    background: color-mix(in srgb, #E8463A 12%, transparent);
+    color: #E8463A;
+}
+
+/* ---------- 设置 ---------- */
+
+.ap-settings-group {
+    border: 1px solid var(--ap-line);
+    border-radius: var(--ap-radius-lg);
+    padding: 14px 18px;
+    margin-bottom: 14px;
+}
+
+.ap-settings-group h4 {
+    margin: 0 0 12px;
+    font-size: 14px;
+}
+
+.ap-setting-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.ap-setting-row .ap-setting-label {
+    flex: 1;
+    font-size: 13px;
+}
+
+.ap-setting-row .ap-setting-label small {
+    display: block;
+    color: var(--ap-muted);
+    font-size: 12px;
+}
+
+.ap-setting-row .b3-select,
+.ap-setting-row input[type="text"] {
+    width: 220px;
+}
+
+.ap-switch {
+    position: relative;
+    width: 38px;
+    height: 22px;
+    border-radius: 999px;
+    border: none;
+    padding: 0;
+    background: var(--ap-line-strong);
+    cursor: pointer;
+    transition: background .15s;
+    flex: none;
+}
+
+.ap-switch::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    transition: left .15s;
+}
+
+.ap-switch.is-on { background: var(--ap-primary); }
+.ap-switch.is-on::after { left: 18px; }
+
+.ap-range-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ap-range-row input[type="range"] { flex: 1; max-width: 260px; }
+
+.ap-wall-preview {
+    width: 120px;
+    height: 64px;
+    border-radius: var(--ap-radius);
+    border: 1px solid var(--ap-line);
+    background-size: cover;
+    background-position: center;
+    background-color: var(--ap-surface);
+}
+
+.ap-muted { color: var(--ap-muted); }
+.ap-mt8 { margin-top: 8px; }
+.ap-mt16 { margin-top: 16px; }
+
+@media (max-width: 640px) {
+    .ap-stage { padding: 12px 10px 4px; }
+    .ap-grid { gap: 14px 6px; }
+    .ap-arrow { display: none; }
+}
