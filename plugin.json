@@ -21,6 +21,9 @@
     "en_US": "Android-style web bookmark launcher for SiYuan."
   },
   "icon": "icon.png",
+  "readme": {
+    "default": "README.md"
+  },
   "keywords": [
     "bookmark",
     "launcher",

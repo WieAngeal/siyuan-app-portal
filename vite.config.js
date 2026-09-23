@@ -17,7 +17,7 @@ function copyRootAssets(outDir) {
     name: "copy-root-assets",
     closeBundle() {
       mkdirSync(outDir, { recursive: true })
-      for (const file of ["plugin.json", "icon.png", "preview.png"]) {
+      for (const file of ["plugin.json", "icon.png", "preview.png", "README.md", "LICENSE"]) {
         const from = resolve(__dirname, file)
         if (existsSync(from)) {
           copyFileSync(from, resolve(outDir, file))
