@@ -1,14 +1,43 @@
-# 统一应用门户
+# 🖥️ 统一应用门户 · App Portal
 
 > 把你的常用网站书签变成思源笔记里的「安卓桌面」——圆角图标网格，一键直达，分类管理，后台维护。
 
-## 这是什么
+<div align="center">
 
-统一应用门户是一个思源笔记插件，把浏览器书签的概念搬进笔记里。不像普通的书签管理器只是一行行链接列表，它用**安卓手机桌面风格**的圆角图标网格展示你的入口，视觉直观、触达高效。点击图标即在新标签页打开对应网站，支持分类、搜索、收藏、拖拽排序、壁纸、访问统计等完整功能。
+[![version](https://img.shields.io/badge/version-0.3.4-4b5563?labelColor=374151&color=60a5fa&style=flat-square)](https://github.com/WieAngeal/siyuan-app-portal/releases)
+[![license](https://img.shields.io/badge/license-MIT-4b5563?labelColor=374151&color=a78bfa&style=flat-square)](LICENSE)
+[![SiYuan](https://img.shields.io/badge/SiYuan-%E2%89%A5%202.9.0-4b5563?labelColor=374151&color=fbbf24&style=flat-square)](https://siyuan-note.club)
+[![Vue](https://img.shields.io/badge/Vue-3-4b5563?labelColor=374151&color=34d399&style=flat-square)](https://vuejs.org)
+[![Vite](https://img.shields.io/badge/Vite-5-4b5563?labelColor=374151&color=f472b6&style=flat-square)](https://vitejs.dev)
 
-## 核心价值
+</div>
 
-### 为什么把它放进思源笔记？
+---
+
+## 📑 目录
+
+- [💡 这是什么](#-这是什么)
+- [📸 效果预览](#-效果预览)
+- [🛠️ 功能全景](#️-功能全景)
+- [🚀 快速上手](#-快速上手)
+- [📦 安装](#-安装)
+- [🧱 技术栈](#-技术栈)
+- [👨‍💻 开发者](#-开发者)
+- [🗂️ 目录结构](#️-目录结构)
+- [🗺️ 路线图](#️-路线图)
+- [🤝 贡献](#-贡献)
+- [📄 许可证](#-许可证)
+- [💖 致谢](#-致谢)
+
+---
+
+## 💡 这是什么
+
+**统一应用门户** 是一个思源笔记插件，把浏览器书签的概念搬进笔记里。
+
+不像普通书签管理器只是一行行链接列表，它用**安卓手机桌面风格**的圆角图标网格展示你的入口，视觉直观、触达高效。点击图标即在新标签页打开对应网站，支持分类、搜索、收藏、拖拽排序、壁纸、访问统计等完整功能。
+
+### 为什么把它放进思源笔记
 
 | 场景 | 没有统一应用门户 | 有了统一应用门户 |
 |------|----------------|-----------------|
@@ -24,11 +53,13 @@
 2. **零迁移成本**：数据跟着思源工作空间走，换设备不丢入口
 3. **一站式管理**：增删改查、导入导出、批量采集、外观定制全在笔记内完成
 
-## 效果预览
+---
+
+## 📸 效果预览
 
 ### 安卓风格桌面弹窗
 
-点击顶栏图标，弹出 92% 宽的大弹窗：搜索框、分类胶囊、圆角图标网格，一目了然。 favicon 加载失败自动降级为彩色首字，主题自适应明暗模式。
+点击顶栏图标，弹出 92% 宽的大弹窗：搜索框、分类胶囊、圆角图标网格，一目了然。favicon 加载失败自动降级为彩色首字，主题自适应明暗模式。
 
 <div align="center">
 
@@ -76,7 +107,9 @@
 
 </div>
 
-## 功能全景
+---
+
+## 🛠️ 功能全景
 
 ### 桌面弹窗（主界面）
 
@@ -139,10 +172,13 @@
 ### 命令面板
 
 支持思源命令面板（`Ctrl+P`）快速调用：
+
 - **打开统一应用门户**：直接弹出桌面
 - **管理统一应用门户书签**：直接打开后台管理
 
-## 快速上手
+---
+
+## 🚀 快速上手
 
 1. 在思源集市安装 `统一应用门户`，启用插件
 2. 顶栏出现 2×2 白色小方块图标，点击弹出桌面
@@ -151,11 +187,15 @@
    - Chrome / Edge：`书签管理器 → 右上角菜单 → 导出书签` 得到 HTML 文件
    - 在「导入 / 备份」标签页选择「浏览器书签导入」，上传 HTML 即可
 
-## 安装方式
+---
 
-### 从集市安装
+## 📦 安装
+
+### 从集市安装（推荐）
 
 在思源笔记的「集市 → 挂件」中搜索 `统一应用门户`，点击安装并启用。
+
+**最低兼容版本**：思源笔记 ≥ 2.9.0
 
 ### 手动安装
 
@@ -163,56 +203,107 @@
 2. 解压到思源工作空间的 `data/plugins/siyuan-app-portal/` 目录
 3. 重启思源，在「设置 → 集市 → 已安装」中启用插件
 
-## 技术栈
+---
 
-- **构建工具**：Vite 5
-- **前端框架**：Vue 3
-- **样式方案**：纯 CSS，基于思源 `--b3-theme-*` CSS 变量自动跟随明暗主题
-- **数据存储**：思源 `Plugin.loadData / saveData`，持久化到工作空间
-- **图标兜底**：多级降级 + Canvas 跨域缓存
+## 🧱 技术栈
 
-## 技术特性
+| 类别 | 技术 | 版本 | 备注 |
+|------|------|------|------|
+| 构建 | Vite | 5 | CJS lib 模式 |
+| 框架 | Vue | 3 | `<script setup>` |
+| 渲染 | 纯 CSS | — | 基于思源 `--b3-theme-*` 自动明暗 |
+| 存储 | 思源 API | — | `plugin.loadData / saveData` |
+| 兼容格式 | CommonJS | — | 思源插件加载器标准 |
 
-- **零外部依赖**：不引入任何第三方运行时库，体积小、加载快
+### 技术特性
+
+- **零外部运行时依赖**：不引入任何第三方 UI 库，体积小、加载快
 - **主题自适应**：全部颜色基于思源 CSS 变量，明暗主题无缝切换
 - **响应式布局**：移动端宽度自动单列适配
 - **单例防抖**：弹窗防重复打开，数据保存防抖 400ms
-- **CJS 格式**：兼容思源插件加载器标准
+- **多级图标降级**：favicon → 首字 → Emoji → 自定义图片
+- **Canvas 跨域缓存**：避免重复请求
 
-## 数据说明
+---
 
-- 所有数据存储在思源工作空间内，跟随工作空间同步
-- 不上传任何数据到第三方服务器
-- favicon 请求仅用于获取网站图标，不携带用户信息
-- 可随时在「偏好设置」中导出 / 清除全部数据
-
-## 开发者
+## 👨‍💻 开发者
 
 ```bash
 # 克隆仓库
-git clone <repo-url>
+git clone https://github.com/WieAngeal/siyuan-app-portal.git
 cd siyuan-app-portal
 
-# 安装依赖
+# 安装依赖（推荐 pnpm）
 pnpm install
 
 # 开发模式（watch 构建并自动输出到思源插件目录）
 pnpm dev
 
-# 生产构建
+# 生产构建（输出到 dist/）
 pnpm build
 
 # 同步产物到思源工作空间
 pnpm sync
+
+# 打包 Release ZIP
+pnpm package
 ```
 
-在项目根目录创建 `.env.local`：
+在项目根目录创建 `.env.local` 指定思源工作空间：
 
-```
+```env
 VITE_SIYUAN_WORKSPACE_PATH=D:/你的思源工作空间路径
 ```
 
-## 路线图
+构建后产物：
+
+```
+dist/
+├── index.js      # 打包后的 CJS 主文件
+├── index.css     # 打包后的样式
+├── icon.png      # 插件图标（复制自根目录）
+└── plugin.json   # 插件元数据（复制自根目录）
+```
+
+---
+
+## 🗂️ 目录结构
+
+```
+siyuan-app-portal/
+├── src/                     # 源码
+│   ├── App.vue              # 主界面（桌面弹窗 + 后台管理路由）
+│   ├── index.js             # 入口（挂载 Vue + 注册思源插件）
+│   ├── api.js               # 思源内核 API 封装（kernelPost）
+│   ├── store.js             # 状态管理（书签/分类/设置）
+│   ├── parsers.js           # URL 解析 / HTML 书签 / CSV / favicon 策略
+│   ├── dialogs.js           # Dialog 构造辅助
+│   ├── utils.js             # 工具函数（hash、防抖、排序）
+│   ├── styles.css           # 全局样式（含思源主题变量适配）
+│   └── components/          # 可复用组件
+│       ├── AppIcon.vue
+│       ├── BookmarkEditor.vue
+│       ├── CategoryEditor.vue
+│       ├── ImportPreview.vue
+│       ├── ManageDialog.vue
+│       └── SettingsPanel.vue
+├── scripts/                 # 开发脚本
+│   ├── deploy.mjs           # 一键 build + 同步到思源插件目录
+│   └── make-icon.mjs        # 图标生成
+├── assets/                  # 截图 / 设计素材（README 引用）
+├── dist/                    # 构建产物（pnpm build 生成）
+├── plugin.json              # 思源插件元数据（版本、描述、最低版本）
+├── package.json             # npm / pnpm 依赖与脚本
+├── vite.config.js           # Vite 配置（define process.env、copyRootAssets、css 固定输出 index.css）
+├── pnpm-lock.yaml
+├── icon.png                 # 插件图标（48×48）
+├── LICENSE
+└── README.md
+```
+
+---
+
+## 🗺️ 路线图
 
 - [ ] 云端书签同步
 - [ ] 自定义图标主题包
@@ -220,16 +311,51 @@ VITE_SIYUAN_WORKSPACE_PATH=D:/你的思源工作空间路径
 - [ ] 键盘快捷导航
 - [ ] 访问热力图可视化
 
-## 许可证
+---
 
-MIT License
+## 🤝 贡献
 
-## 反馈与建议
+欢迎 Issue、PR、功能建议、Bug 报告。
 
-- 提 Issue / PR 欢迎来玩
-- 使用问题、功能建议、bug 报告均欢迎
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feat/xxx`)
+3. 提交改动 (`git commit -m 'feat: xxx'`)
+4. 推送到分支 (`git push origin feat/xxx`)
+5. 提交 Pull Request
 
-## 赞助
+提交代码前请确认：
+- `pnpm build` 无报错
+- 改动遵循现有代码风格
+- 如有新截图请同步更新 `assets/` 与 README
+
+---
+
+## 🔒 数据说明
+
+- 所有数据存储在思源工作空间内，跟随工作空间同步
+- **不上传任何数据到第三方服务器**
+- favicon 请求仅用于获取网站图标，不携带用户信息
+- 可随时在「偏好设置」中导出 / 清除全部数据
+
+---
+
+## 📄 许可证
+
+[MIT License](./LICENSE)
+
+---
+
+## 💖 致谢
+
+- 思源笔记团队提供的开源笔记内核与插件生态
+- 所有提 Issue、PR、反馈建议的用户
+
+### 反馈与建议
+
+- GitHub Issue / PR 欢迎来玩
+- 使用问题、功能建议、Bug 报告均欢迎
+
+### 赞助
 
 如果这个插件对你有帮助，欢迎一杯咖啡鼓励继续开发 ☕
 
